@@ -15,20 +15,21 @@
     <div class="text-center">
         <div id="begin-quiz">
             <h1>Welcome!</h1>
+            <br>
             <button class ="btn btn-primary" id="begin">Begin Quiz!</button>
+            <br><br>
+            <p class = "text-secondary">Lets go!</p>
         </div>
 
         <div id="question-field" style = "display: none;">
             <h2 id="question-text"></h2>
-            <div id=answers></div>
+            <div id="answers"></div>
+            <br><br>
+            <p class = "text-secondary" id= "feedback-msg"></p>
         </div>
     </div>
-    <br><br>
-    <div class ="text-secondary text-center">
-        <p id= "feedback-msg">Lets go!</p>
-    </div>
     
-    <div class="countdown">Time Remaining:<span id="time">0</span></div>
+    <div class="count-down">Time Remaining:<span id="time">60</span></div>
 
 
     <script src="./script.js"></script>
