@@ -12,23 +12,31 @@
 </head>
 
 <body>
-    <div class="text-center">
+    <div class="text-center my-5">
         <div id="begin-quiz">
             <h1>Welcome!</h1>
             <br>
-            <button class ="btn btn-primary" id="begin">Begin Quiz!</button>
+            <button class="btn btn-primary" id="begin">Begin Quiz!</button>
             <br><br>
-            <p class = "text-secondary">Lets go!</p>
+            <p class="text-secondary">Lets go!</p>
         </div>
 
-        <div id="question-field" style = "display: none;">
+        <div id="question-field" style="display: none;">
             <h2 id="question-text"></h2>
             <div id="answers"></div>
             <br><br>
-            <p class = "text-secondary" id= "feedback-msg"></p>
+            <p class="text-secondary" id="feedback-msg"></p>
+        </div>
+
+        <div id="result-field" style="display: none;">
+            <h2>All done! Your scorse is: </h2>
+            <br>
+            <h3 id= "score"></h3>
+
+            <!-- Submit form -->
         </div>
     </div>
-    
+
     <div class="count-down">Time Remaining:<span id="time">60</span></div>
 
 
