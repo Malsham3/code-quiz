@@ -44,6 +44,16 @@ answerDiv.addEventListener("click", function(e) {
     const question = questions(questionIndex);
 
     const correctAnswer = question.answers[question.answerIndex];
+
+    if (userAnswer === correctAnswer) {
+        //that was correct
+    } else {
+        //that was incorrect
+    }
+
+    questionIndexx++;
+
+    newQuestion();
 });
 
 function newQuestion() {
