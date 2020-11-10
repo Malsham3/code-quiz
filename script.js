@@ -27,4 +27,15 @@ beginBtn.addEventListener("click", function (e){
 
     beginQuiz.style.display = "none";
     questionField.style.display = "block";
+
+    //then a new question
+
 });
+
+function newQuestion() {
+    const currentQuestion = questions[questionIndex];
+
+    questionText.textContent = currentQuestion.question;
+
+    answerDiv.innerHTML = "";
+}
