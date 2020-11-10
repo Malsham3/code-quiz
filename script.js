@@ -38,4 +38,13 @@ function newQuestion() {
     questionText.textContent = currentQuestion.question;
 
     answerDiv.innerHTML = "";
+
+    for (let i = 0; i < currentQuestion.answers.length; i++) {
+        const answer = currentQuestion.answers[i];
+        const answerBtn = document.createElement("button");
+        answerBtn.setAttribute("class", "btn btn-primary");
+        answerBtn.textContent = answer;
+        answerDiv.appendChild(answerBtn);
+        
+    }
 }
