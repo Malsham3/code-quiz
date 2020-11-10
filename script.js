@@ -4,6 +4,7 @@ const beginQuiz = document.getElementById("begin-quiz");
 const questionField = document.getElementById("question-field");
 const questionText = document.getElementById("question-text");
 const answerDiv = document.getElementById("answers");
+const feedbackMsg = document.getElementById("feedback-message");
 
 let questionIndex = 0;
 
@@ -46,13 +47,14 @@ answerDiv.addEventListener("click", function(e) {
     const correctAnswer = question.answers[question.answerIndex];
 
     if (userAnswer === correctAnswer) {
-        //that was correct
+        feedbackMsg.textContent = "Correct! :)"
     } else {
-        //that was incorrect
+        feedbackMsg.textContent = "Incorrect! :("
     }
 
     questionIndexx++;
-
+    // do we need more questions to render??????????????????
+    // if not end the game !!!!!!
     newQuestion();
 });
 
@@ -62,6 +64,7 @@ function newQuestion() {
     questionText.textContent = currentQuestion.question;
 
     answerDiv.innerHTML = "";
+    feedbackMsg.innerHTML = "";
 
     for (let i = 0; i < currentQuestion.answers.length; i++) {
         const answer = currentQuestion.answers[i];
