@@ -29,7 +29,21 @@ beginBtn.addEventListener("click", function (e){
     questionField.style.display = "block";
 
     //then a new question
+    newQuestion();
 
+});
+
+answerDiv.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    //no action taken if click wasn't on a button. 
+    if (!e.target.matches("button")) return;
+
+    const userAnswer = e.target.textContent;
+
+    const question = questions(questionIndex);
+
+    const correctAnswer = question.answers[question.answerIndex];
 });
 
 function newQuestion() {
