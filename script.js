@@ -13,17 +13,29 @@ let questionIndex = 0;
 
 const questions = [
     {
-        question: "Question 1",
-        answers: ["True", "False"],
-        answerIndex: 0
+        question: "Who painted the Mona Lisa?",
+        answers: ["Kanye West", "Leonardo diCaprio", "Leonardo da Vinci", "None of the above"],
+        answerIndex: 2
     },
     {
-        question: "Question 2",
+        question: "Where did Enchiladas originate from?",
+        answers: ["Puerto Rico", "Filibertos", "Afghanistan", "Mexico"],
+        answerIndex: 3
+    },
+    {
+        question: "The sun is a planet.",
         answers: ["True", "False"],
+        answerIndex: 1
+    },{
+        question: "What is the most famous Mexican beer?",
+        answers: ["Corona", "Modelo", "Dos Equis"],
         answerIndex: 0
+    },{
+        question: "What is the name of Apple's virtual assistant?",
+        answers: ["Alexa", "Cortana", "Siri", "Lady Gaga"],
+        answerIndex: 2
     }
-    // edit previous questions
-    // write total of 5 questions. 20 points each. 
+
 ]
 
 beginBtn.addEventListener("click", function (e) {
@@ -40,6 +52,7 @@ beginBtn.addEventListener("click", function (e) {
 });
 
 let finalScore = 0;
+var initials = '';
 answerDiv.addEventListener("click", function (e) {
     e.preventDefault();
     //no action taken if click wasn't on a button. 
@@ -114,3 +127,8 @@ function displayResults() {
 function saveScore(score){
     localStorage.setItem("initials", finalScore);
 }
+
+
+
+//HTML: add a form that asks for initials, in JS, add event listener that saves input
+//ask to get initials and use saveScore to save

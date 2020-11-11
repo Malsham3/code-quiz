@@ -31,14 +31,27 @@
         <div id="result-field" style="display: none;">
             <h2>All done! Your scorse is: </h2>
             <br>
-            <h3 id= "score-text"></h3>
+            <h3 id="score-text"></h3>
+
+            <form class="form-inline d-flex justify-content-center">
+                <label class="sr-only" >Username</label>
+                <div class="input-group mb-2 mr-sm-2">
+                  <input type="text" class="form-control" placeholder="Enter your initials">
+                </div>
+              
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+              </form>
+
+            <!-- <button class="btn btn-success" href=""></button> -->
+            <a href="highscores.html" class="btn btn-success">View Highscores</a>
 
             <!-- Submit form -->
+
         </div>
     </div>
     <div class="count-down">Time Remaining:<span id="time">60</span></div>
-    
-    <a class = "high-scores" href="highscores.html">View Highscores</a>
+
+    <a class="high-scores" href="highscores.html">View Highscores</a>
 
     <script src="./script.js"></script>
 </body>
