@@ -9,10 +9,13 @@ const countDown = document.getElementById("time");
 const resultField = document.getElementById("result-field")
 const scoreText = document.getElementById("score-text");
 const submitBtn = document.getElementById("submit");
-const highScoresField = document.getElementById("score-keeper")
+const highScoresField = document.getElementById("score-keeper");
 
+// This variable will be used to retreive each question in our questions object array.
 let questionIndex = 0;
 
+//each question has it's text (or qustion), answers, and an answer index.
+//answer index will be used to compare user's answer to the correct answer
 const questions = [
     {
         question: "Who painted the Mona Lisa?",
@@ -40,6 +43,28 @@ const questions = [
 
 ]
 
+//this function will access each question using questionIndex, store it inside of currentQuestion, and display it along with the answer buttons (inside of answerDiv) on the page. 
+function newQuestion() {
+    const currentQuestion = questions[questionIndex];
+
+    questionText.textContent = currentQuestion.question;
+
+    //following line resets answerDiv to clear old answer buttons.
+    answerDiv.innerHTML = "";
+
+    //following for-loop creates a new button per answer for each question.
+    //al answer buttons share similar styling.
+    for (let i = 0; i < currentQuestion.answers.length; i++) {
+        const answer = currentQuestion.answers[i];
+        const answerBtn = document.createElement("button");
+        answerBtn.setAttribute("class", "btn btn-primary mx-1");
+        answerBtn.textContent = answer;
+        answerDiv.appendChild(answerBtn);
+
+    }
+}
+
+//once begin button is clicked, timer will start, initial page will disappear and first question will appear using newQuestion() function.
 beginBtn.addEventListener("click", function (e) {
     //start timer
     setTime();
@@ -53,50 +78,38 @@ beginBtn.addEventListener("click", function (e) {
 
 });
 
-
-submitBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-    var initials = document.getElementById("initials-form").value;
-    //get initials
-    var score = finalScore;
-    localStorage.setItem(initials, score);
-
-    //this for-loop is going to create a new row for each time initials submitted to keep scores data.
-    for (let i = 0; i < localStorage.length; i++) {
-        const answer = currentQuestion.answers[i];
-        const answerBtn = document.createElement("button");
-        answerBtn.setAttribute("class", "btn btn-primary mx-1");
-        answerBtn.textContent = answer;
-        answerDiv.appendChild(answerBtn);
-
-    }
-})
-
+// The user's score is initialized inside of variable finalScore and set to zero.
 let finalScore = 0;
 answerDiv.addEventListener("click", function (e) {
     e.preventDefault();
-    //no action taken if click wasn't on a button. 
+    //no action is taken unless the button was clicked.
     if (!e.target.matches("button")) return;
 
-
+    //store the text contenet of the answer button that user clicked.
     const userAnswer = e.target.textContent;
 
+    //access each question in our questions object array.
     const question = questions[questionIndex];
 
+    //using answerIndex, we define the correct answer per question.
     const correctAnswer = question.answers[question.answerIndex];
 
+    //action is taken per correct and incorrect answer.
     if (userAnswer === correctAnswer) {
         feedbackMsg.textContent = "Correct! :)"
+        //20 points added to the user's score per correct answer.
         finalScore += 20
     } else {
-        secondsLeft -= 10;
+        //15 seconds deducted per incorrect answer.
+        secondsLeft -= 15;
         feedbackMsg.textContent = "Incorrect! :("
     }
 
+    //iterating to the next questoin in our questions object array.
     questionIndex++;
-    //  need more questions to render??
-    // if not end the game !
-    if (questionIndex < questions.length) {
+
+    // if there are no more questions; alert user that the game is over, end the game and display the result window.
+    if (questionIndex < 5) {
         newQuestion();
     } else {
         alert("Game over!")
@@ -104,44 +117,53 @@ answerDiv.addEventListener("click", function (e) {
     }
 });
 
-function newQuestion() {
-    const currentQuestion = questions[questionIndex];
+//once submit button is clicked, a pair of (intials, score) is stored inside of localStorage.
+submitBtn.addEventListener("click", function (e) {
+    e.preventDefault();
 
-    questionText.textContent = currentQuestion.question;
+    //store initials input submitted by user to variable initials.
+    var initials = document.getElementById("initials-form").value;
 
-    answerDiv.innerHTML = "";
+    //store the finalScore
+    var score = finalScore;
+    localStorage.setItem(initials, score);
 
-    for (let i = 0; i < currentQuestion.answers.length; i++) {
-        const answer = currentQuestion.answers[i];
-        const answerBtn = document.createElement("button");
-        answerBtn.setAttribute("class", "btn btn-primary mx-1");
-        answerBtn.textContent = answer;
-        answerDiv.appendChild(answerBtn);
+    //this for-loop is going to create a new row for each time initials submitted to keep scores data.
+    for (let i = 0; i < localStorage.length; i++) {
+        var tr = document.createElement('tr');
+        var th = document.createElement('th');
+        th.setAttribute("scope", "row")
+        for (let j = 0; j < 2; j++) {
+            var td = document.createElement('td');
+            td.innerHTML = localStorage.key[i];
+            th.appendChild(td)
+        }
+        tr.appendChild(th)
+        highScoresField.appendChild(tr)
 
     }
-}
+})
 
+//timer used is going to countdown from 60, so a secondsLeft variable is defined.
 var secondsLeft = 60;
+
+//timer will count down in seconds.
 function setTime() {
     var timerInterval = setInterval(function () {
         secondsLeft--;
+        //keeps remaining time in seconds displayed inside of timer div.
         countDown.textContent = secondsLeft;
 
-        if (secondsLeft === 0 || (questionIndex === questions.length)) {
+        if (secondsLeft === 0 || (questionIndex === 4)) {
             clearInterval(timerInterval);
         }
     }, 1000);
 }
 
+//following function will display the user's score
 function displayResults() {
     scoreText.textContent = finalScore;
     beginQuiz.style.display = "none";
     questionField.style.display = "none";
     resultField.style.display = "block";
 }
-
-
-
-
-//HTML: add a form that asks for initials, in JS, add event listener that saves input
-//ask to get initials and use saveInfo to save

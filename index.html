@@ -12,28 +12,37 @@
 </head>
 
 <body>
+    <!-- main div contains a welcome message, begin button, a list of rules, paused timer, a link to the high scores page -->
     <div class="text-center my-5">
         <div id="begin-quiz">
-            <h1>Welcome!</h1>
+            <h1>Welcome To The Random Knowledge Quiz!</h1>
             <br>
             <button class="btn btn-primary" id="begin">Begin Quiz!</button>
-            <br><br>
-            <p class="text-secondary">Lets go!</p>
+            <br><br><br>
+            <header class="text-secondary"> The Rules: <br><br>
+                <p>5 questions</p>
+                <p>Each question is worth 20 points</p>
+                <p>Highest score is 100</p>
+                <p>You have 60 seconds to answer</p>
+                <p>15 seconds are deducted per incorrect answer</p>
+                <p>GOOD LUCK!!</p>
+            </header>
         </div>
 
+        <!-- following div is hidden until begin button pressed and allowed by the script code -->
         <div id="question-field" style="display: none;">
             <h2 id="question-text"></h2>
             <div id="answers"></div>
             <br><br>
             <p class="text-secondary" id="feedback-msg"></p>
         </div>
-
+        <!-- following div is hidden until quiz is complete and results are in! -->
         <div id="result-field" style="display: none;">
             <h2>All done! Your scorse is: </h2>
             <h3 id="score-text"></h3>
 
             <form class="form-inline d-flex justify-content-center">
-                <label class="sr-only">Username</label>
+            <!-- input text field and submit button -->
                 <div class="input-group mb-2 mr-sm-2">
                     <input type="text" class="form-control" placeholder="Enter your initials" id="initials-form"/>
                 </div>
@@ -41,14 +50,17 @@
                 <button id="submit" type="submit" class="btn btn-primary mb-2">Submit</button>
             </form>
 
-            <!-- <button class="btn btn-success" href=""></button> -->
+            <!-- hyperbutton to the highscores page -->
             <a href="highscores.html" class="btn btn-success">View Highscores</a>
 
 
         </div>
     </div>
+    
+    <!-- timer div attached to top right corner using css-->
     <div class="count-down">Time Remaining:<span id="time">60</span></div>
 
+    <!-- hyperlink attached to top left corner (using css) that directs to highscores page -->
     <a class="high-scores" href="highscores.html">View Highscores</a>
 
     <script src="./script.js"></script>
