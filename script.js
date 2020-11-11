@@ -7,7 +7,7 @@ const answerDiv = document.getElementById("answers");
 const feedbackMsg = document.getElementById("feedback-msg");
 const countDown = document.getElementById("time");
 const resultField = document.getElementById("result-field")
-const score = document.getElementById("score");
+const scoreText = document.getElementById("score-text");
 
 let questionIndex = 0;
 
@@ -56,16 +56,17 @@ answerDiv.addEventListener("click", function (e) {
         feedbackMsg.textContent = "Correct! :)"
         finalScore += 20
     } else {
-        feedbackMsg.textContent = "Incorrect! :("
         secondsLeft -= 10;
+        feedbackMsg.textContent = "Incorrect! :("
     }
 
     questionIndex++;
-    // do we need more questions to render??????????????????
-    // if not end the game !!!!!!
+    //  need more questions to render??
+    // if not end the game !
     if (questionIndex < questions.length) {
         newQuestion();
     } else {
+        saveScore(finalScore);
         displayResults();
     }
 });
@@ -87,13 +88,13 @@ function newQuestion() {
     }
 }
 
-let secondsLeft = 60;
+var secondsLeft = 60; 
 function setTime() {
     var timerInterval = setInterval(function () {
         secondsLeft--;
         countDown.textContent = secondsLeft;
 
-        if (secondsLeft === 0) {
+        if (secondsLeft === 0 || (questionIndex === questions.length)) {
             clearInterval(timerInterval);
         }
     }, 1000);
@@ -105,5 +106,11 @@ function displayResults() {
     beginQuiz.style.display = "none";
     questionField.style.display = "none";
     resultField.style.display = "block";
-    score.textContent = finalScore;
+    scoreText.textContent = finalScore;
+    //display initials form and take initials as input and save in local storage.
+}
+
+// function that saves final score and saves it into local storage.
+function saveScore(score){
+    localStorage.setItem("initials", finalScore);
 }

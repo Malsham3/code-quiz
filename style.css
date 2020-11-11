@@ -1,5 +1,11 @@
 .count-down{
     position: fixed;
     top: 10px;
-    right: 10px;
+    right: 20px;
+}
+
+.high-scores, .go-back{
+    position: fixed;
+    top: 10px;
+    left: 20px;
 }
