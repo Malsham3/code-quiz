@@ -9,7 +9,7 @@ const countDown = document.getElementById("time");
 const resultField = document.getElementById("result-field")
 const scoreText = document.getElementById("score-text");
 const submitBtn = document.getElementById("submit");
-const highScoresField = document.getElementById("score-keeper");
+const $tbody = document.getElementById("score-keeper");
 
 // This variable will be used to retreive each question in our questions object array.
 let questionIndex = 0;
@@ -122,27 +122,42 @@ submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
 
     //store initials input submitted by user to variable initials.
-    var initials = document.getElementById("initials-form").value;
+    var playerInitials = document.getElementById("initials-form").value;
 
     //store the finalScore
-    var score = finalScore;
-    localStorage.setItem(initials, score);
+    var playerScore = finalScore;
+    localStorage.setItem(playerInitials, playerScore);
 
-    //this for-loop is going to create a new row for each time initials submitted to keep scores data.
-    for (let i = 0; i < localStorage.length; i++) {
-        var tr = document.createElement('tr');
-        var th = document.createElement('th');
-        th.setAttribute("scope", "row")
-        for (let j = 0; j < 2; j++) {
-            var td = document.createElement('td');
-            td.innerHTML = localStorage.key[i];
-            th.appendChild(td)
-        }
-        tr.appendChild(th)
-        highScoresField.appendChild(tr)
+    const players = [];
+    var player = { initials: playerInitials, score: playerScore }
+    players.push(player);
 
+    function buildRow(player) {
+        const $tr = document.createElement('td');
+        const $position = document.createElement('td');
+        const $initial = document.createElement('td')
+        const $score = document.createElement('td')
+
+        $position.textContent = player.position;
+        $initial.textContent = player.initials;
+        $score.textContent = player.score;
+
+        $tr.appendChild($position, $initial, $score)
+
+        return $tr;
     }
+
+    players.forEach(function (player, i) {
+        $tbody.appendChild(
+            buildRow({
+                position: i + 1,
+                initials: players.initials,
+                score: playerScore
+            })
+        )
+    })
 })
+
 
 //timer used is going to countdown from 60, so a secondsLeft variable is defined.
 var secondsLeft = 60;
