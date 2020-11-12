@@ -10,6 +10,8 @@ const resultField = document.getElementById("result-field")
 const scoreText = document.getElementById("score-text");
 const submitBtn = document.getElementById("submit");
 const $tbody = document.getElementById("score-keeper");
+const viewHSbtn = document.getElementById("view-highscores")
+const scoresField = document.getElementById("highscores-field")
 
 // This variable will be used to retreive each question in our questions object array.
 let questionIndex = 0;
@@ -43,7 +45,7 @@ const questions = [
 
 ]
 
-//this function will access each question using questionIndex, store it inside of currentQuestion, and display it along with the answer buttons (inside of answerDiv) on the page. 
+//Following function will access each question using questionIndex, store it inside of currentQuestion, and display it along with the answer buttons (inside of answerDiv) on the page. 
 function newQuestion() {
     const currentQuestion = questions[questionIndex];
 
@@ -117,9 +119,17 @@ answerDiv.addEventListener("click", function (e) {
     }
 });
 
+viewHSbtn.addEventListener("click", function () {
+
+    resultField.style.display = "none";
+    scoresField.style.display = "block";
+})
+
 //once submit button is clicked, a pair of (intials, score) is stored inside of localStorage.
 submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
+
+    const players = [];
 
     //store initials input submitted by user to variable initials.
     var playerInitials = document.getElementById("initials-form").value;
@@ -128,36 +138,30 @@ submitBtn.addEventListener("click", function (e) {
     var playerScore = finalScore;
     localStorage.setItem(playerInitials, playerScore);
 
-    const players = [];
-    var player = { initials: playerInitials, score: playerScore }
-    players.push(player);
+    players.push({ initials: playerInitials, score: playerScore });
 
+    var position;
+    //following function builds a new row per player which initials are submitted.
+
+    //147-164 need more work in order to generate a data row per players initials and score and have them displayed on the high scores table. 
     function buildRow(player) {
         const $tr = document.createElement('td');
         const $position = document.createElement('td');
         const $initial = document.createElement('td')
         const $score = document.createElement('td')
 
-        $position.textContent = player.position;
-        $initial.textContent = player.initials;
-        $score.textContent = player.score;
+        $position.textContent = position;
+        $initial.textContent = playerInitials;
+        $score.textContent = playerScore;
 
         $tr.appendChild($position, $initial, $score)
 
         return $tr;
     }
-
     players.forEach(function (player, i) {
-        $tbody.appendChild(
-            buildRow({
-                position: i + 1,
-                initials: players.initials,
-                score: playerScore
-            })
-        )
+        $tbody.appendChild(buildRow(player))
     })
 })
-
 
 //timer used is going to countdown from 60, so a secondsLeft variable is defined.
 var secondsLeft = 60;
@@ -169,7 +173,7 @@ function setTime() {
         //keeps remaining time in seconds displayed inside of timer div.
         countDown.textContent = secondsLeft;
 
-        if (secondsLeft === 0 || (questionIndex === 4)) {
+        if (questionIndex === 4) {
             clearInterval(timerInterval);
         }
     }, 1000);

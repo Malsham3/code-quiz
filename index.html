@@ -48,20 +48,33 @@
                 </div>
 
                 <button id="submit" type="submit" class="btn btn-primary mb-2">Submit</button>
+                <br>
             </form>
 
             <!-- hyperbutton to the highscores page -->
-            <a href="highscores.html" class="btn btn-success">View Highscores</a>
+            <button id="view-highscores" class="btn btn-success mb-2">View Highscores </button>
 
 
         </div>
+
+        <div id="highscores-field" class = "container w-50 " style="display: none;">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Initials</th>
+                    <th scope="col">Score</th>
+                  </tr>
+                </thead>
+                <tbody id= "score-keeper">
+                    <!-- players data will be inserted here -->
+                </tbody>
+              </table>
+            </div>
     </div>
     
     <!-- timer div attached to top right corner using css-->
     <div class="count-down">Time Remaining:<span id="time">60</span></div>
-
-    <!-- hyperlink attached to top left corner (using css) that directs to highscores page -->
-    <a class="high-scores" href="highscores.html">View Highscores</a>
 
     <script src="./script.js"></script>
 </body>
