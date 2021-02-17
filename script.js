@@ -67,6 +67,7 @@ function newQuestion() {
     const answerLI = document.createElement("LI")
     const answerA = document.createElement("A");
     answerA.setAttribute("href", "#");
+    answerA.setAttribute("class", "answer-a")
     answerLI.setAttribute("class", "answer-item")
     answerA.textContent = answer;
     answerLI.appendChild(answerA);
