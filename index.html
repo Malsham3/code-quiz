@@ -1,82 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Code Quiz</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <!-- main div contains a welcome message, begin button, a list of rules, paused timer, a link to the high scores page -->
-    <div class="text-center my-5 ">
-        <div id="begin-quiz">
-            <h1>Welcome To The Random Knowledge Quiz!</h1>
-            <br>
-            <button class="btn btn-primary" id="begin">Begin Quiz!</button>
-            <br><br><br>
-            <header class="text-secondary"> The Rules: <br><br>
-                <p>5 questions</p>
-                <p>Each question is worth 20 points</p>
-                <p>Highest score is 100</p>
-                <p>You have 60 seconds to answer</p>
-                <p>15 seconds are deducted per incorrect answer</p>
-                <p>GOOD LUCK!!</p>
-            </header>
+    <div class="bg text-center">
+
+      <div class="container py-5">
+        <div class="row justify-content-center">
+                <h1>Welcome To The Random Knowledge Quiz!</h1>
         </div>
 
+        <div class="row card-row justify-content-center py-5">
+            <div class="card text-center">
+                <div class="card-body">
+                  <h5 class="card-title">The Rules:</h5>
+                  <ul class="card-list">
+                    <li>Each question is worth 20 points</li>
+                    <li>Highest score is 100</li>
+                    <li>You have 60 seconds to answer</li>
+                    <li>15 seconds are deducted per incorrect answer</li>
+                  </ul>
+
+                  <p class="card-text">Good Luck. 😎</p>
+                  <a href="#" class="btn btn-primary">Start Quiz</a>
+                </div>
+              </div>
+        </div>
+
+        </div>
+
+      <div id="begin-quiz" class="py-5">
         <!-- following div is hidden until begin button pressed and allowed by the script code -->
-        <div id="question-field" class= "mt-5" style="display: none;">
-            <h2 id="question-text"></h2>
-            <div id="answers"></div>
-            <br><br>
-            <p class="text-secondary" id="feedback-msg"></p>
+        <div id="question-field" class="mt-5" style="display: none">
+          <h2 id="question-text"></h2>
+          <div id="answers"></div>
+          <br /><br />
+          <p class="text-secondary" id="feedback-msg"></p>
         </div>
         <!-- following div is hidden until quiz is complete and results are in! -->
-        <div id="result-field" style="display: none;">
-            <h2>All done! Your scorse is: </h2>
-            <h3 id="score-text"></h3>
+        <div id="result-field" style="display: none">
+          <h2>All done! Your scorse is:</h2>
+          <h3 id="score-text"></h3>
 
-            <form class="form-inline d-flex justify-content-center">
+          <form class="form-inline d-flex justify-content-center">
             <!-- input text field and submit button -->
-                <div class="input-group mb-2 mr-sm-2">
-                    <input type="text" class="form-control" placeholder="Enter your initials" id="initials-form"/>
-                </div>
+            <div class="input-group mb-2 mr-sm-2">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter your initials"
+                id="initials-form"
+              />
+            </div>
 
-                <button id="submit" type="submit" class="btn btn-primary mb-2">Submit</button>
-                <br>
-            </form>
+            <button id="submit" type="submit" class="btn btn-primary mb-2">
+              Submit
+            </button>
+            <br />
+          </form>
 
-            <!-- hyperbutton to the highscores page -->
-            <button id="view-highscores" class="btn btn-success mb-2">View Highscores </button>
-
-
+          <!-- hyperbutton to the highscores page -->
+          <button id="view-highscores" class="btn btn-success mb-2">
+            View Highscores
+          </button>
         </div>
 
-        <div id="highscores-field" class = "container w-50 " style="display: none;">
-            <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Initials</th>
-                    <th scope="col">Score</th>
-                  </tr>
-                </thead>
-                <tbody id= "score-keeper">
-                    <!-- players data will be inserted here -->
-                </tbody>
-              </table>
-            </div>
+        <div id="highscores-field" class="container w-50" style="display: none">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Initials</th>
+                <th scope="col">Score</th>
+              </tr>
+            </thead>
+            <tbody id="score-keeper">
+              <!-- players data will be inserted here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
     </div>
-    
+
     <!-- timer div attached to top right corner using css-->
     <div class="count-down">Time Remaining:<span id="time">60</span></div>
 
     <script src="./script.js"></script>
-</body>
-
+  </body>
 </html>

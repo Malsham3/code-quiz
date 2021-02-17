@@ -1,19 +1,46 @@
+body,
+html {
+  height: 100%;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("code-quiz-img.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1{
+    color: whitesmoke;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+/* .card{
+  width: 50rem;
+} */
+
+.card-list{
+  list-style:circle; 
+  line-height: 2.5;
+}
+
 /* timer fixed to top right corner with top and right margin adjustments. */
-.count-down{
-    position: fixed;
-    top: 20px;
-    right: 20px;
+.count-down {
+  position: fixed;
+  top: 20px;
+  right: 20px;
 }
 
 /* view high scores and Go Back hyper links are fixed on top left corner in their assigned HTML page, top and right margins adjusted */
-.high-scores, .go-back{
-    position: fixed;
-    top: 20px;
-    left: 20px;
-}
-
-/* horiontaly aligning the content on the first page */
-.container{
-    margin-top: 150px;
-    
+.high-scores,
+.go-back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
 }
