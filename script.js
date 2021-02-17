@@ -64,10 +64,13 @@ function newQuestion() {
   //al answer buttons share similar styling.
   for (let i = 0; i < currentQuestion.answers.length; i++) {
     const answer = currentQuestion.answers[i];
-    const answerBtn = document.createElement("button");
-    answerBtn.setAttribute("class", "btn btn-primary mx-1");
-    answerBtn.textContent = answer;
-    answerDiv.appendChild(answerBtn);
+    const answerLI = document.createElement("LI")
+    const answerA = document.createElement("A");
+    answerA.setAttribute("href", "#");
+    answerLI.setAttribute("class", "answer-item")
+    answerA.textContent = answer;
+    answerLI.appendChild(answerA);
+    answerDiv.appendChild(answerLI);
   }
 }
 
@@ -89,7 +92,7 @@ let finalScore = 0;
 answerDiv.addEventListener("click", function (e) {
   e.preventDefault();
   //no action is taken unless the button was clicked.
-  if (!e.target.matches("button")) return;
+  if (!e.target.matches("A")) return;
 
   //store the text contenet of the answer button that user clicked.
   const userAnswer = e.target.textContent;
@@ -102,13 +105,13 @@ answerDiv.addEventListener("click", function (e) {
 
   //action is taken per correct and incorrect answer.
   if (userAnswer === correctAnswer) {
-    feedbackMsg.textContent = "Correct! :)";
+    feedbackMsg.textContent = "Correct! ✔️";
     //20 points added to the user's score per correct answer.
     finalScore += 20;
   } else {
     //15 seconds deducted per incorrect answer.
     secondsLeft -= 15;
-    feedbackMsg.textContent = "Incorrect! :(";
+    feedbackMsg.textContent = "Incorrect! ✖️";
   }
 
   //iterating to the next questoin in our questions object array.

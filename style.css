@@ -21,20 +21,35 @@ h1{
     font-family: Comic Sans MS, Comic Sans, cursive;
 }
 
-/* .card{
-  width: 50rem;
-} */
+.card{
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  padding-top: 25px;
+  padding-bottom: 15px;
+  width: 50%;
+  border-radius: 50px;
+}
 
-.card-list{
-  list-style:circle; 
+.card-title{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.card-list, .answer-item{
+  list-style:none; 
   line-height: 2.5;
+}
+
+.answer-item{
+  background-color: whitesmoke;
+  border: 2px solid red;
+  border-radius: 5px;
+  margin: 10px;
 }
 
 /* timer fixed to top right corner with top and right margin adjustments. */
 .count-down {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  font-size: 20px;
+  color: white;
 }
 
 /* view high scores and Go Back hyper links are fixed on top left corner in their assigned HTML page, top and right margins adjusted */
