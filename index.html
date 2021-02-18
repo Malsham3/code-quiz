@@ -41,6 +41,7 @@
 
               <p class="card-text">Good Luck. 😎</p>
               <a id="begin" class="btn mt-3">Start Quiz</a>
+              <a id="view-highscores" class="btn mt-3">View Highscores</a>
             </div>
           </div>
         </div>
@@ -81,15 +82,16 @@
               background-color: rgba(245, 245, 245, 0.9);
             "
           >
-          <h2>Game Over! Your score is:</h2>
+            <h2>Game Over! Your score is:</h2>
             <div class="card-body align-self-center" style="width: 50%">
-                <h3 id="score-text"></h3>
+              <h3 id="score-text"></h3>
 
               <form class="form-inline form d-flex justify-content-center mt-4">
                 <!-- input text field and submit button -->
                 <div class="input-group mb-2 mr-sm-2">
                   <input
                     type="text"
+                    maxlength="2"
                     class="form-control"
                     placeholder="Enter your initials"
                     id="initials-form"
@@ -105,22 +107,37 @@
           </div>
         </div>
 
-        <div id="highscores-field" class="container w-50" style="display: none">
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Initials</th>
-                <th scope="col">Score</th>
-              </tr>
-            </thead>
-            <tbody id="score-keeper">
-              <!-- players data will be inserted here -->
-            </tbody>
-          </table>
+    </div>
+
+    <!-- Highscores card -->
+    <div id="highscores-field" class="container" style="display: none">
+
+        <div class="row justify-content-center">
+          <div
+            class="scores-card"
+            style="
+              border-radius: 15px;
+              background-color: rgba(245, 245, 245, 0.9);
+            "
+          >
+            <div class="card-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Initials</th>
+                        <th scope="col">Score</th>
+                      </tr>
+                    </thead>
+                    <tbody id="score-keeper">
+                      <!-- players data will be inserted here -->
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+        
         </div>
       </div>
-    </div>
 
     <script src="./script.js"></script>
   </body>

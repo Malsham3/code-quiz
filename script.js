@@ -127,24 +127,22 @@ answerDiv.addEventListener("click", function (e) {
   }
 });
 
-// viewHSbtn.addEventListener("click", function () {
-//   resultField.style.display = "none";
-//   scoresField.style.display = "block";
-// });
+viewHSbtn.addEventListener("click", function () {
+  beginQuiz.style.display = "none";
+  scoresField.style.display = "block";
+});
 
 // Get all players and their scores to display in data table.
 var playersCount = localStorage.length;
 var players = [];
 
 for (let i = 0; i < playersCount; i++) {
-  // var position;
-  // var initials = Object.keys(localStorage)
-  // var scores = Object.values(localStorage)
+  //save initials and scores in two seperate arrays, from local storage.
+  var initials = localStorage.key(i);
+  var score = localStorage.getItem(initials);
 
-  var initials = localStorage.key(i)
-  var score = localStorage.getItem(initials)
-
-  players[i] = {position: i + 1, initials: initials, score: parseInt(score)};
+  //update players array with current data saved in local storage.
+  players[i] = { position: i + 1, initials: initials, score: parseInt(score) };
 }
 
 //once submit button is clicked, a pair of (intials, score) is stored inside of localStorage.
@@ -154,46 +152,40 @@ submitBtn.addEventListener("click", function (e) {
   //store initials input submitted by user to variable initials.
   var playerInitials = document.getElementById("initials-form").value;
 
-  console.log(playerInitials);
-  console.log(finalScore);
-
+  //store player's initials and score in local storage.
   localStorage.setItem(playerInitials, finalScore);
 
+  //adding the newly added player to the players array in order to build an up to date table
   var position;
-  players.push({position: players.length + 1, initials: playerInitials, score: finalScore });
-
-  console.log(players);
-
-  //for each player, build a data row with their information
-  players.forEach(function (player) {
-    
-
-
-    // $tbody.appendChild(
-    //   buildRow({
-    //     position: i + 1,
-    //     initial: players.initials,
-    //     score: players.score,
-    //   })
-    // );
+  players.push({
+    position: players.length + 1,
+    initials: playerInitials,
+    score: finalScore,
   });
-
-  //following function builds a new row per player which initials are submitted.
-  function buildRow(player) {
-    const $tr = document.createElement("tr");
-    const $position = document.createElement("td");
-    const $initial = document.createElement("td");
-    const $score = document.createElement("td");
-
-    $position.textContent = position;
-    $initial.textContent = playerInitials;
-    $score.textContent = playerScore;
-
-    $tr.appendChild($position, $initial, $score);
-
-    return $tr;
-  }
 });
+
+//for each player, build a data row with their information
+players.forEach(function (player) {
+  $tbody.appendChild(buildRow(player.position, player.initials, player.score));
+});
+
+console.log(players);
+
+//following function builds a new row per player which initials are submitted.
+function buildRow(position, initial, score) {
+  const $tr = document.createElement("tr");
+  const $position = document.createElement("td");
+  const $initial = document.createElement("td");
+  const $score = document.createElement("td");
+
+  $position.textContent = position;
+  $initial.textContent = initial;
+  $score.textContent = score;
+
+  $tr.append($position, $initial, $score);
+
+  return $tr;
+}
 
 //timer used is going to countdown from 60, so a secondsLeft variable is defined.
 var secondsLeft = 60;
