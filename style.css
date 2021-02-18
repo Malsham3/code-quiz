@@ -21,8 +21,14 @@ h1 {
   font-family: Comic Sans MS, Comic Sans, cursive;
 }
 
+h5 {
+  text-decoration: underline;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
 .card {
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 25px;
   padding-top: 25px;
   padding-bottom: 15px;
   width: 50%;
@@ -80,8 +86,7 @@ h1 {
   transition: all 0.3s ease 0s;
 }
 
-#begin,
-#submit:hover {
+#begin:hover, #submit:hover {
   color: #404040 !important;
   font-weight: 700 !important;
   letter-spacing: 3px;

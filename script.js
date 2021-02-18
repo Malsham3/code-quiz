@@ -64,11 +64,11 @@ function newQuestion() {
   //al answer buttons share similar styling.
   for (let i = 0; i < currentQuestion.answers.length; i++) {
     const answer = currentQuestion.answers[i];
-    const answerLI = document.createElement("LI")
+    const answerLI = document.createElement("LI");
     const answerA = document.createElement("A");
     answerA.setAttribute("href", "#");
-    answerA.setAttribute("class", "answer-a")
-    answerLI.setAttribute("class", "answer-item")
+    answerA.setAttribute("class", "answer-a");
+    answerLI.setAttribute("class", "answer-item");
     answerA.textContent = answer;
     answerLI.appendChild(answerA);
     answerDiv.appendChild(answerLI);
@@ -137,9 +137,14 @@ var playersCount = localStorage.length;
 var players = [];
 
 for (let i = 0; i < playersCount; i++) {
-  var initials = localStorage.getItem("initials")
-  var scores = localStorage.getItem("score")
-  players[i] = {initials: initials, score: scores}
+  // var position;
+  // var initials = Object.keys(localStorage)
+  // var scores = Object.values(localStorage)
+
+  var initials = localStorage.key(i)
+  var score = localStorage.getItem(initials)
+
+  players[i] = {position: i + 1, initials: initials, score: parseInt(score)};
 }
 
 //once submit button is clicked, a pair of (intials, score) is stored inside of localStorage.
@@ -152,21 +157,26 @@ submitBtn.addEventListener("click", function (e) {
   console.log(playerInitials);
   console.log(finalScore);
 
-  localStorage.setItem(playerInitials, finalScore)
-  
-  // var position;
-  // players.push({ initials: playerInitials, score: playerScore });
+  localStorage.setItem(playerInitials, finalScore);
 
-  // players.forEach(function (i) {
-  //   localStorage.setItem(players[i]);
-  //   $tbody.appendChild(
-  //     buildRow({
-  //       position: i + 1,
-  //       initial: players.initials,
-  //       score: players.score,
-  //     })
-  //   );
-  // });
+  var position;
+  players.push({position: players.length + 1, initials: playerInitials, score: finalScore });
+
+  console.log(players);
+
+  //for each player, build a data row with their information
+  players.forEach(function (player) {
+    
+
+
+    // $tbody.appendChild(
+    //   buildRow({
+    //     position: i + 1,
+    //     initial: players.initials,
+    //     score: players.score,
+    //   })
+    // );
+  });
 
   //following function builds a new row per player which initials are submitted.
   function buildRow(player) {

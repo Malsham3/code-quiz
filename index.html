@@ -17,7 +17,7 @@
     <!-- main div contains a welcome message, begin button, a list of rules, paused timer, a link to the high scores page -->
     <div class="bg text-center">
       <!-- Welcome card -->
-      <div id="begin-quiz" class="container py-5">
+      <div id="begin-quiz" class="container">
         <div class="row justify-content-center">
           <h1>Welcome To The Random Knowledge Quiz!</h1>
         </div>
@@ -32,12 +32,12 @@
           >
             <div class="card-body">
               <h5 class="card-title">The Rules</h5>
-              <ul class="card-list">
+              <div class="card-list">
                 <li>Each question is worth 20 points</li>
                 <li>Highest score is 100</li>
                 <li>You have 60 seconds to answer</li>
                 <li>15 seconds are deducted per incorrect answer</li>
-              </ul>
+              </div>
 
               <p class="card-text">Good Luck. 😎</p>
               <a id="begin" class="btn mt-3">Start Quiz</a>
@@ -48,7 +48,7 @@
 
       <!-- Questions Card -->
       <!-- following div is hidden until begin button pressed and allowed by the script code -->
-      <div id="question-field" class="container py-5" style="display: none">
+      <div id="question-field" class="container" style="display: none">
         <div class="row justify-content-center">
           <!-- timer-->
           <div class="count-down">Time Remaining:<span id="time">60</span></div>
@@ -72,7 +72,7 @@
       </div>
 
       <!-- following div is hidden until quiz is complete and results are in! -->
-      <div id="result-field" class="container py-5" style="display: none">
+      <div id="result-field" class="container" style="display: none">
         <div class="row justify-content-center py-5">
           <div
             class="card"
