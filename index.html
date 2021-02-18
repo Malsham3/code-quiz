@@ -16,8 +16,7 @@
   <body>
     <!-- main div contains a welcome message, begin button, a list of rules, paused timer, a link to the high scores page -->
     <div class="bg text-center">
-
-        <!-- Welcome card -->
+      <!-- Welcome card -->
       <div id="begin-quiz" class="container py-5">
         <div class="row justify-content-center">
           <h1>Welcome To The Random Knowledge Quiz!</h1>
@@ -47,59 +46,63 @@
         </div>
       </div>
 
-       <!-- Questions Card -->
-       <!-- following div is hidden until begin button pressed and allowed by the script code -->
+      <!-- Questions Card -->
+      <!-- following div is hidden until begin button pressed and allowed by the script code -->
       <div id="question-field" class="container py-5" style="display: none">
-
         <div class="row justify-content-center">
-                <!-- timer-->
-            <div class="count-down">Time Remaining:<span id="time">60</span></div>
+          <!-- timer-->
+          <div class="count-down">Time Remaining:<span id="time">60</span></div>
         </div>
-  
+
         <div class="row justify-content-center py-5">
-            <div
-              class="card"
-              style="
-                border-radius: 15px;
-                background-color: rgba(245, 245, 245, 0.9);
-              "
-            >
+          <div
+            class="card"
+            style="
+              border-radius: 15px;
+              background-color: rgba(245, 245, 245, 0.9);
+            "
+          >
             <h5 id="question-text" class="card-title mb-4"></h5>
-              <div class="card-body align-self-center" style = "width: 50%;">
-                <div id="answers"></div>
-                <h4 id="feedback-msg" class="mt-3"></h4>
-              </div>
+            <div class="card-body align-self-center" style="width: 50%">
+              <div id="answers"></div>
+              <h4 id="feedback-msg" class="mt-3"></h4>
             </div>
           </div>
-
+        </div>
       </div>
 
-        <!-- following div is hidden until quiz is complete and results are in! -->
-        <div id="result-field" style="display: none">
-          <h2>All done! Your scorse is:</h2>
-          <h3 id="score-text"></h3>
+      <!-- following div is hidden until quiz is complete and results are in! -->
+      <div id="result-field" class="container py-5" style="display: none">
+        <div class="row justify-content-center py-5">
+          <div
+            class="card"
+            style="
+              border-radius: 15px;
+              background-color: rgba(245, 245, 245, 0.9);
+            "
+          >
+          <h2>Game Over! Your score is:</h2>
+            <div class="card-body align-self-center" style="width: 50%">
+                <h3 id="score-text"></h3>
 
-          <form class="form-inline d-flex justify-content-center">
-            <!-- input text field and submit button -->
-            <div class="input-group mb-2 mr-sm-2">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Enter your initials"
-                id="initials-form"
-              />
+              <form class="form-inline form d-flex justify-content-center mt-4">
+                <!-- input text field and submit button -->
+                <div class="input-group mb-2 mr-sm-2">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter your initials"
+                    id="initials-form"
+                  />
+                </div>
+                <button id="submit" type="submit" class="btn btn-primary mt-2">
+                  Submit
+                </button>
+
+                <br />
+              </form>
             </div>
-
-            <button id="submit" type="submit" class="btn btn-primary mb-2">
-              Submit
-            </button>
-            <br />
-          </form>
-
-          <!-- hyperbutton to the highscores page -->
-          <button id="view-highscores" class="btn btn-success mb-2">
-            View Highscores
-          </button>
+          </div>
         </div>
 
         <div id="highscores-field" class="container w-50" style="display: none">

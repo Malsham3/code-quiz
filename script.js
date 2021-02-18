@@ -127,10 +127,20 @@ answerDiv.addEventListener("click", function (e) {
   }
 });
 
-viewHSbtn.addEventListener("click", function () {
-  resultField.style.display = "none";
-  scoresField.style.display = "block";
-});
+// viewHSbtn.addEventListener("click", function () {
+//   resultField.style.display = "none";
+//   scoresField.style.display = "block";
+// });
+
+// Get all players and their scores to display in data table.
+var playersCount = localStorage.length;
+var players = [];
+
+for (let i = 0; i < playersCount; i++) {
+  var initials = localStorage.getItem("initials")
+  var scores = localStorage.getItem("score")
+  players[i] = {initials: initials, score: scores}
+}
 
 //once submit button is clicked, a pair of (intials, score) is stored inside of localStorage.
 submitBtn.addEventListener("click", function (e) {
@@ -139,23 +149,24 @@ submitBtn.addEventListener("click", function (e) {
   //store initials input submitted by user to variable initials.
   var playerInitials = document.getElementById("initials-form").value;
 
-  //store the finalScore
-  var playerScore = finalScore;
-  var position;
-  var players = [];
-  players.push({ initials: playerInitials, score: playerScore });
-  console.log(players[0]);
+  console.log(playerInitials);
+  console.log(finalScore);
 
-  players.forEach(function (player, i) {
-    localStorage.setItem(players[i]);
-    $tbody.appendChild(
-      buildRow({
-        position: i + 1,
-        initial: players.initials,
-        score: players.score,
-      })
-    );
-  });
+  localStorage.setItem(playerInitials, finalScore)
+  
+  // var position;
+  // players.push({ initials: playerInitials, score: playerScore });
+
+  // players.forEach(function (i) {
+  //   localStorage.setItem(players[i]);
+  //   $tbody.appendChild(
+  //     buildRow({
+  //       position: i + 1,
+  //       initial: players.initials,
+  //       score: players.score,
+  //     })
+  //   );
+  // });
 
   //following function builds a new row per player which initials are submitted.
   function buildRow(player) {
