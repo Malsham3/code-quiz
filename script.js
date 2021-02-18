@@ -12,6 +12,7 @@ const submitBtn = document.getElementById("submit");
 const $tbody = document.getElementById("score-keeper");
 const viewHSbtn = document.getElementById("view-highscores");
 const scoresField = document.getElementById("highscores-field");
+const gobackBtn = document.getElementById("go-back")
 
 // This variable will be used to retreive each question in our questions object array.
 let questionIndex = 0;
@@ -131,6 +132,11 @@ viewHSbtn.addEventListener("click", function () {
   beginQuiz.style.display = "none";
   scoresField.style.display = "block";
 });
+
+gobackBtn.addEventListener("click", function() {
+  scoresField.style.display = "none";
+  beginQuiz.style.display = "block";
+})
 
 // Get all players and their scores to display in data table.
 var playersCount = localStorage.length;
