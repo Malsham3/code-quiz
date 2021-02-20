@@ -17,10 +17,8 @@
     <!-- main div contains a welcome message, begin button, a list of rules, paused timer, a link to the high scores page -->
     <div class="bg text-center">
       <!-- Welcome card -->
-      <div id="begin-quiz" class="container">
-        <div class="row justify-content-center">
-          <h1>Welcome To The Random Knowledge Quiz!</h1>
-        </div>
+      <div id="begin-quiz" class="container" style="display: block">
+        <h1 id= "welcome">Welcome To The Random Knowledge Quiz!</h1>
 
         <div class="row justify-content-center py-5">
           <div
@@ -63,7 +61,7 @@
               background-color: rgba(245, 245, 245, 0.9);
             "
           >
-            <h5 id="question-text" class="card-title mb-4"></h5>
+            <h4 id="question-text" class="question-title mb-4 mx-2"></h4>
             <div class="card-body align-self-center" style="width: 50%">
               <div id="answers"></div>
               <h4 id="feedback-msg" class="mt-3"></h4>
@@ -76,19 +74,19 @@
       <div id="result-field" class="container" style="display: none">
         <div class="row justify-content-center py-5">
           <div
-            class="card"
+            class="card py-5"
             style="
               border-radius: 15px;
               background-color: rgba(245, 245, 245, 0.9);
             "
           >
             <h2>Game Over! Your score is:</h2>
-            <div class="card-body align-self-center" style="width: 50%">
+            <div class="card-body align-self-center">
               <h3 id="score-text"></h3>
 
               <form class="form-inline form d-flex justify-content-center mt-4">
                 <!-- input text field and submit button -->
-                <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group mb-2">
                   <input
                     type="text"
                     maxlength="2"
@@ -96,14 +94,14 @@
                     placeholder="Enter your initials"
                     id="initials-form"
                   />
+                  <button id="submit" type="submit" class="btn ml-2">
+                    Submit
+                  </button>
                 </div>
-                <button id="submit" type="submit" class="btn btn-primary mt-2">
-                  Submit
-                </button>
+            </form>
 
-                <br />
-              </form>
-            </div>
+            <a id="view-highscores" class="btn mt-5">View Highscores</a>
+        </div>
           </div>
         </div>
 
