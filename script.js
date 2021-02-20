@@ -11,8 +11,10 @@ const scoreText = document.getElementById("score-text");
 const submitBtn = document.getElementById("submit");
 const $tbody = document.getElementById("score-keeper");
 const viewHSbtn = document.getElementById("view-highscores");
+const viewHSbtn2 = document.getElementById("view-highscores-2")
 const scoresField = document.getElementById("highscores-field");
 const gobackBtn = document.getElementById("go-back")
+const initialsInput = document.getElementById("initials-form")
 
 // This variable will be used to retreive each question in our questions object array.
 let questionIndex = 0;
@@ -47,7 +49,7 @@ const questions = [
   },
   {
     question: "What is the name of Apple's virtual assistant?",
-    answers: ["Alexa", "Cortana", "Siri", "Lady Gaga"],
+    answers: ["Alexa", "Cortana", "Siri"],
     answerIndex: 2,
   },
 ];
@@ -124,6 +126,8 @@ answerDiv.addEventListener("click", function (e) {
     newQuestion();
   } else {
     alert("Game over!");
+    questionIndex = 0;
+    feedbackMsg.textContent = "";
     displayResults();
   }
 });
@@ -132,6 +136,11 @@ viewHSbtn.addEventListener("click", function () {
   beginQuiz.style.display = "none";
   scoresField.style.display = "block";
 });
+
+viewHSbtn2.addEventListener("click", function () {
+  resultField.style.display = "none";
+  scoresField.style.display = "block";
+})
 
 gobackBtn.addEventListener("click", function() {
   scoresField.style.display = "none";
@@ -156,26 +165,25 @@ submitBtn.addEventListener("click", function (e) {
   e.preventDefault();
 
   //store initials input submitted by user to variable initials.
-  var playerInitials = document.getElementById("initials-form").value;
+  var playerInitials = initialsInput.value;
 
   //store player's initials and score in local storage.
   localStorage.setItem(playerInitials, finalScore);
 
   //adding the newly added player to the players array in order to build an up to date table
-  var position;
   players.push({
     position: players.length + 1,
     initials: playerInitials,
     score: finalScore,
   });
-});
 
-//for each player, build a data row with their information
-players.forEach(function (player) {
-  $tbody.appendChild(buildRow(player.position, player.initials, player.score));
-});
+  //for each player, build a data row with their information
+  players.forEach(function (player) {
+    $tbody.appendChild(buildRow(player.position, player.initials, player.score));
+  });
 
-console.log(players);
+  initialsInput.value = "";
+});
 
 //following function builds a new row per player which initials are submitted.
 function buildRow(position, initial, score) {
